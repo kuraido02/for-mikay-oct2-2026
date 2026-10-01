@@ -4,6 +4,7 @@
   --card: hsla(0, 0%, 100%, 0.55);
   --text: hsl(330, 30%, 28%);
   --accent: hsl(330, 55%, 62%);
+  --pad: clamp(10px, 2vw, 20px);
 }
 
 * {
@@ -63,12 +64,13 @@ body {
   display: flex;
   gap: 20px;
   height: 100vh;
-  padding: 20px;
+  height: 100dvh;
+  padding: var(--pad);
 }
 
 .item:nth-child(1),
 .item:nth-child(3) {
-  flex: 0 0 200px;
+  flex: 0 0 clamp(90px, 14vw, 220px);
 }
 
 .item:nth-child(1) img,
@@ -98,15 +100,15 @@ body {
 
 /* every section in the middle panel */
 .item:nth-child(2) > div {
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - var(--pad) * 2);
+  min-height: calc(100dvh - var(--pad) * 2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 30px 0;
+  padding: 20px 0;
 
-  /* start hidden, fade up when .show is added */
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.9s ease, transform 0.9s ease;
@@ -119,17 +121,22 @@ body {
 
 .item:nth-child(2) img,
 .item:nth-child(2) video {
-  width: 100%;
-  max-height: 65vh;
-  object-fit: cover;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 62vh;
+  max-height: 62dvh;
+  object-fit: contain;
   border-radius: 16px;
   box-shadow: 0 8px 24px hsla(330, 40%, 40%, 0.2);
 }
 
 p {
   margin: 16px 0 0;
-  font-size: 1.6rem;
+  font-size: clamp(1.05rem, 1rem + 1.2vw, 1.6rem);
   line-height: 1.4;
+  padding: 0 8px;
 }
 
 a {
@@ -147,11 +154,35 @@ a {
   50%      { transform: translateY(-8px); }
 }
 
-/* small screens: hide the side images */
+/* tablets: slightly smaller photos and text spacing */
+@media (max-width: 900px) {
+  .item:nth-child(2) > div {
+    padding: 12px 0;
+  }
+}
+
+/* phones in portrait: hide the side images so the middle gets the full width */
 @media (max-width: 700px) {
   .item:nth-child(1),
   .item:nth-child(3) {
     display: none;
+  }
+
+  .item:nth-child(2) {
+    padding: 0;
+  }
+}
+
+/* short screens (phones in landscape): leave more room for the text */
+@media (max-height: 500px) {
+  .item:nth-child(2) img,
+  .item:nth-child(2) video {
+    max-height: 55dvh;
+  }
+
+  p {
+    margin-top: 8px;
+    font-size: 1rem;
   }
 }
 
