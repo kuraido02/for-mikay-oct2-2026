@@ -2,6 +2,7 @@
   --pink-1: hsl(306, 56%, 90%);
   --pink-2: hsl(331, 41%, 82%);
   --card: hsla(0, 0%, 100%, 0.55);
+  --message: hsl(351, 83%, 59%);;
   --text: hsl(330, 30%, 28%);
   --accent: hsl(330, 55%, 62%);
   --pad: clamp(10px, 2vw, 20px);
@@ -134,8 +135,15 @@ body {
   box-shadow: 0 8px 24px hsla(330, 40%, 40%, 0.2);
 }
 
+.message {
+    margin-top: 75px;
+    color: var(--message);
+    text-shadow: 2px 2px 5px red;
+    font-size: 3rem;
+}
+
 p {
-  margin: 16px 0 0;
+  margin: 56px 0 0;
   font-size: clamp(1.05rem, 1rem + 1.2vw, 1.6rem);
   line-height: 1.4;
   padding: 0 8px;
