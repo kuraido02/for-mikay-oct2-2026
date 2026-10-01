@@ -14,6 +14,7 @@
 body {
   margin: 0;
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   background: linear-gradient(160deg, var(--pink-1), var(--pink-2));
   color: var(--text);
@@ -28,6 +29,7 @@ body {
   align-items: center;
   gap: 20px;
   height: 100vh;
+  height: 100dvh;
   text-align: center;
   animation: fadeIn 1.2s ease both;
 }
@@ -161,11 +163,22 @@ a {
   }
 }
 
-/* phones in portrait: hide the side images so the middle gets the full width */
+
+/* phones: keep the side photos, but as slim strips */
 @media (max-width: 700px) {
+  .container {
+    gap: 8px;
+  }
+
   .item:nth-child(1),
   .item:nth-child(3) {
-    display: none;
+    flex: 0 0 clamp(44px, 12vw, 80px);
+  }
+
+  .item:nth-child(1) img,
+  .item:nth-child(3) img {
+    border-radius: 10px;
+    object-position: center 30%; /* keeps faces in view when cropped */
   }
 
   .item:nth-child(2) {
@@ -183,6 +196,13 @@ a {
   p {
     margin-top: 8px;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .item:nth-child(1),
+  .item:nth-child(3) {
+    display: none;
   }
 }
 
