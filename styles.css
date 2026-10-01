@@ -22,7 +22,6 @@ body {
   font-family: 'Quicksand', Verdana, sans-serif;
 }
 
-/* ---------- Intro page ---------- */
 .intro {
   display: flex;
   flex-direction: column;
@@ -62,7 +61,6 @@ body {
   box-shadow: 0 10px 22px hsla(330, 40%, 40%, 0.25);
 }
 
-/* ---------- Message page ---------- */
 .container {
   display: flex;
   gap: 20px;
@@ -86,7 +84,6 @@ body {
   box-shadow: 0 8px 24px hsla(330, 40%, 40%, 0.2);
 }
 
-/* scrollable middle panel */
 .item:nth-child(2) {
   flex: 1;
   min-width: 0;
@@ -101,7 +98,6 @@ body {
   display: none;
 }
 
-/* every section in the middle panel */
 .item:nth-child(2) > div {
   min-height: calc(100vh - var(--pad) * 2);
   min-height: calc(100dvh - var(--pad) * 2);
@@ -153,7 +149,6 @@ a {
     text-decoration: none;
 }
 
-/* ---------- Animations ---------- */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: none; }
@@ -164,15 +159,12 @@ a {
   50%      { transform: translateY(-8px); }
 }
 
-/* tablets: slightly smaller photos and text spacing */
 @media (max-width: 900px) {
   .item:nth-child(2) > div {
     padding: 12px 0;
   }
 }
 
-
-/* phones: keep the side photos, but as slim strips */
 @media (max-width: 700px) {
   .container {
     gap: 8px;
@@ -186,7 +178,7 @@ a {
   .item:nth-child(1) img,
   .item:nth-child(3) img {
     border-radius: 10px;
-    object-position: center 30%; /* keeps faces in view when cropped */
+    object-position: center 30%; 
   }
 
   .item:nth-child(2) {
@@ -194,7 +186,6 @@ a {
   }
 }
 
-/* short screens (phones in landscape): leave more room for the text */
 @media (max-height: 500px) {
   .item:nth-child(2) img,
   .item:nth-child(2) video {
@@ -214,7 +205,6 @@ a {
   }
 }
 
-/* respect people who turn animations off */
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
   .item:nth-child(2) > div { opacity: 1; transform: none; }
